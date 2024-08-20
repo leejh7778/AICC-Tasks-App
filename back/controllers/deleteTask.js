@@ -4,7 +4,7 @@ exports.deleteTask = async (req, res) => {
   const itemId = req.params.itemId;
 
   try {
-    const result = await database.query('DELETE * FROM task WHERE _id = $1', [
+    const result = await database.query('DELETE FROM task WHERE _id = $1', [
       itemId,
     ]);
     return res.status(200).json({ message: 'Task Deleted Successfully' });

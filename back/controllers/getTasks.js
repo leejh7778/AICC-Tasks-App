@@ -2,10 +2,11 @@ const database = require('../database/database'); // database 모듈 불러오�
 
 exports.getTasks = async (req, res) => {
   const userId = req.params.userId;
+  console.log(userId);
 
   try {
     const result = await database.query(
-      'SELECT * FROM task WHERE userId = $1',
+      'SELECT * FROM task WHERE userId = $1 ORDER BY created_at DESC',
       [userId]
     );
     return res.status(200).json(result.rows);
